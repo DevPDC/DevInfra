@@ -1,0 +1,272 @@
+body
+{
+    margin:0px !important;
+    padding:0px !important;
+    height:100%;
+    width:100%; 
+    font-family: 'Abel', sans-serif !important;
+}
+
+textarea
+{
+    resize: none;
+}
+
+@font-face
+{
+    font-family: 'quicksand';
+    src: url(../font/quicksand/Quicksand-Regular.ttf) format('truetype');
+}
+
+@font-face
+{
+    font-family: 'raleway';
+    src: url(../font/raleway/Raleway-Regular.ttf) format('truetype');
+}
+
+@font-face
+{
+    font-family: 'syncopate';
+    src: url(../font/syncopate/Syncopate-Regular.ttf) format('truetype');
+}
+/* BOOTSTRAP CUSTOM */
+
+
+
+.content-wrapper
+{
+    background:rgb(47, 53, 58) !important;
+}
+
+.table-button-text
+{
+    font-size:10px !important;
+}
+
+.p-popop
+{
+    font-size:10.5px !important;
+}
+
+.hover-blue
+{
+    background:rgb(100, 195, 206) !important;
+    transition: 0.2s ease-in-out;
+}
+
+.text-syncopate
+{
+    font-family: 'syncopate';
+}
+
+.text-red
+{
+    color:red;
+}
+
+.sched-box .sched-bar
+{
+    opacity: 0.7 !important;
+}
+
+.sched-bar
+{
+    width:100%;
+    overflow:hidden;
+}
+
+.sched-title
+{
+    font-family:'syncopate';
+    font-size:14px;
+    font-weight:bold;
+    color:orange;
+}
+
+.sched-body
+{
+    font-size:12px;
+    color:white;
+}
+
+#main-content
+{
+    margin:0px !important;
+    padding:0px !important;
+}
+
+.form-control
+{
+    width:100%;
+}
+
+#philrice-map
+{
+    height: 100% !important;
+    width:100%;
+    overflow:hidden;
+    top:0;
+    left:0;
+    min-height: 800px !important;
+    margin: 0px;
+    padding: 0px;
+    z-index: 0;
+}
+
+#add-card
+{
+    top:15%;
+    right:2.5%;
+    position:fixed;
+}
+
+.center
+{
+    text-align: center !important;
+}
+
+.box-title-dashboard
+{
+    font-family: 'syncopate';
+    font-size: 20px;
+}
+
+.text-white
+{
+    color:white;
+}
+
+#graph-wrapper
+{
+    height:100%;
+}
+
+#graph-box
+{
+    top:50px !important;
+    margin:0px;
+    padding:0px;
+    background:rgba(12,12,12,0.5);
+    height:100%;
+}
+
+#dashboard-div
+{
+    background:rgba(0,0,0,0);
+}
+
+#box-dashboard
+{
+    background:rgba(0,0,0,0.4) !important;
+    margin:0px !important;
+    padding:0px !important;
+}
+
+.dashboard-title
+{
+    color:white;
+    font-family: 'syncopate';
+    font-size: 14px;
+}
+
+#map-graph
+{
+    z-index:5
+}
+
+.center
+{
+    text-align:center;
+}
+
+.modal-title
+{
+    font-family: 'raleway';
+    font-size:17px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.modal-title, 
+.modal-title-logo
+{
+    color: green;
+}
+
+#dashboard-header,
+.logo
+{
+    background:rgba(0,0,0,0.7) !important;
+
+}
+
+#main-header
+{
+    margin-left:50px !important;
+    border:1px white solid;
+}
+
+#dashboard-navigation a
+{
+    color:white !important;
+}
+
+#profile-picture
+{
+    height:100%;
+    width:100%;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:auto;
+    margin-bottom: auto;
+    display:block;
+}
+
+#profile-desc
+{
+    font-family:'syncopate';
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.fade-out 
+{ 
+    animation: 1.5s fade-out ease forwards; 
+}
+.fade-in 
+{ 
+    animation: 1.5s fade-in ease forwards; 
+}
+
+.bg-metallic
+{
+    background: rgba(36 ,36 ,36 ,1) !important;
+    color: white !important;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; },
+    to { opacity: 0; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; },
+    to { opacity: 1; }
+}
+
+
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+/* .no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+	background: url(../storage/images/spinner/Preloader_1.gif) center no-repeat #fff;
+} */
