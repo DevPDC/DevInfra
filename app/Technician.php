@@ -8,11 +8,16 @@ class Technician extends Model
 {
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsToMany('App\Category');
     }
 
     public function profile()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Profile','emp_idno','user_idno');
+    }
+
+    public function post()
+    {
+        return $this->belongsToMany('App\Posts','request_technician','technician_id','id');
     }
 }

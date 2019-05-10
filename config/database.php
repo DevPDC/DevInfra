@@ -40,10 +40,13 @@ return [
         ],
 
         'mysql' => [
+            'dump_command_path' => '../../public/storage/logo', // only the path, so without 'mysqldump' or 'pg_dump'
+            'dump_command_timeout' => 60 * 5, // 5 minute timeout
+            'dump_using_single_transaction' => true, // perform dump using a single transaction
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE_ONE', 'ppdis'),
+            'database' => env('DB_DATABASE', 'ppdis'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -55,12 +58,15 @@ return [
         ],
 
         'mysql2' => [
+            'dump_command_path' => '../../public/storage/logo', // only the path, so without 'mysqldump' or 'pg_dump'
+            'dump_command_timeout' => 60 * 5, // 5 minute timeout
+            'dump_using_single_transaction' => true, // perform dump using a single transaction
             'driver' => 'mysql',
             'host' => env('DB_HOST_TWO', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE_TWO', 'hris'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'username' => env('DB_USERNAME_SQL_TWO', 'forge'),
+            'password' => env('DB_PASSWORD_SQL_TWO', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

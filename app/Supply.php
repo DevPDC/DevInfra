@@ -11,4 +11,9 @@ class Supply extends Model
     {
         return $this->belongsToMany('App\Inspection');
     }
+
+    public function brand()
+    {
+        return $this->belongsTo('App\Brand');
+    }
 }

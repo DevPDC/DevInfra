@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract 
 {
 
-    use Authenticatable,CanResetPassword,Notifiable;
+    use Authenticatable,CanResetPassword,Notifiable,HasApiTokens;
 
 
     /**
@@ -20,6 +21,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
+
+    protected $connection = 'mysql';
 
     protected $table  = 'users';
 
@@ -45,7 +48,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     
     public function profile()
     {
-        return $this->hasOne('App\Profile');
+        return $this->hasOne('App\Profile','emp_idno','user_idno');
     }
 
     public function save(array $options = array()) {
@@ -57,6 +60,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function technician()
     {
         return $this->hasMany('App\Technician');
+    }
+
+    public function role()
+    {
+        return $this->hasOne('App\RoleUser');
+    }
+
+    public function evaluation()
+    {
+        return $this->hasMany('App\Evaluation');
+    }
+
+    public function facilityimage()
+    {
+        return $this->hasMany('FacilityImage','user_id','user_idno');
     }
 
 }

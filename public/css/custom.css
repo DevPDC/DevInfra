@@ -1,16 +1,3 @@
-body
-{
-    margin:0px !important;
-    padding:0px !important;
-    height:100%;
-    width:100%; 
-    font-family: 'Abel', sans-serif !important;
-}
-
-textarea
-{
-    resize: none;
-}
 
 @font-face
 {
@@ -29,9 +16,50 @@ textarea
     font-family: 'syncopate';
     src: url(../font/syncopate/Syncopate-Regular.ttf) format('truetype');
 }
+
+@font-face
+{
+    font-family: 'pontano sans';
+    src: url(../font/pontano/PontanoSans-Regular.ttf) format('truetype');
+}
 /* BOOTSTRAP CUSTOM */
 
+body
+{
+    margin:0px !important;
+    padding:0px !important;
+    height:100%;
+    width:100%;
+    font-family:'pontano sans'
+}
 
+textarea
+{
+    resize: none;
+}
+
+.evaluation-card
+{
+    margin:2px !important;
+    padding:2px !important
+}
+
+.evaluation-title
+{
+    color: #20a8d8
+}
+
+.evaluation-rate
+{
+    color:red;
+    font-style: italic
+}
+
+.evaluation-body
+{
+    text-align: justify !important;
+    font-size: 9 !important
+}
 
 .content-wrapper
 {
@@ -105,19 +133,130 @@ textarea
     height: 100% !important;
     width:100%;
     overflow:hidden;
+    position: fixed;
     top:0;
     left:0;
     min-height: 800px !important;
     margin: 0px;
     padding: 0px;
+    z-index: 0
+}
+
+#facility-map
+{
+    height: 100% !important;
+    width:100%;
+    overflow:hidden;
+    min-height: 400px !important;
+    margin: 0px;
+    padding: 0px;
     z-index: 0;
+}
+
+.leaflet-zoom-box
+{
+    top:5 !important
+}
+
+#navbar-map
+{
+    background: rgba(32, 32, 32, 0.5);
+    border-color: transparent !important
 }
 
 #add-card
 {
-    top:15%;
-    right:2.5%;
+    top:6%;
+    right:18%;
     position:fixed;
+    z-index: 2;
+    background: rgba(32, 32, 32, 0.5);
+    border-color: transparent;
+    width:275px
+}
+
+#add-card>input,
+#add-card>select,
+#add-card>textarea
+{
+    opacity: 0.8 !important
+}
+
+#database-card
+{
+    position:fixed;
+    z-index: 2;
+    background: rgba(32, 32, 32, 0.5);
+    border-color: transparent;
+    padding: 0px !important;
+    margin:0px !important
+}
+
+#database-card>table
+{
+    background: rgba(32, 32, 32, 0.5) !important;
+    border-color: transparent
+}
+
+#table-card
+{
+    background: rgba(32, 32, 32, 0.5) !important;
+    color:#f0f3f5
+}
+
+#table-card>table
+{
+    border-color: transparent;
+    width:100%;
+    min-width: 100%;
+}
+
+.filter-title
+{
+    color: white;
+}
+
+#filter-card
+{
+    top:6%;
+    right:1.5%;
+    position:fixed;
+    width:275px;
+    z-index: 2;
+    background: rgba(32, 32, 32, 0.5);
+    border-color: transparent
+}
+
+#filter-card #radios
+{
+    display:block;
+}
+
+#weather-card
+{
+    padding-left:0px;
+    top:0% !important;
+    right:0% !important;
+    width:60%;
+    height:50%;
+    z-index: 2;
+    background: rgba(32, 32, 32, 0.5);
+    border-color: transparent
+}
+
+#add-card>.card-header,
+#database-card>.card-header,
+#filter-card>.card-header
+{
+    background:rgba(32,32,32,0.8);
+    border-bottom-color: transparent;
+    padding-bottom:0px
+}
+
+#add-card-2
+{
+    position:fixed;
+    z-index: 2;
 }
 
 .center
@@ -190,7 +329,7 @@ textarea
 .modal-title, 
 .modal-title-logo
 {
-    color: green;
+    color: 	#20a8d8;
 }
 
 #dashboard-header,
@@ -245,16 +384,35 @@ textarea
     color: white !important;
 }
 
-@keyframes fade-out {
-    from { opacity: 1; },
-    to { opacity: 0; }
+.bg-lightblue
+{
+    background: rgb(153, 204, 255);
+    color: black
 }
 
-@keyframes fade-in {
-    from { opacity: 0; },
-    to { opacity: 1; }
+.select2-results .select2-highlighted {
+    background: #3ea211;
+    color:black !important
 }
 
+/* Buttons */
+
+.btn-xs
+{
+    padding: .125rem .25rem;
+    font-size: .765625rem;
+    line-height: 1.5
+}
+
+#btn-view
+{
+    border-color: rgba(211,211,211,0.5)
+}
+
+.text-bold
+{
+    font-weight: bold
+}
 
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript, 
@@ -270,3 +428,196 @@ if it's not present, don't show loader */
 	z-index: 200;
 	background: url(../storage/images/spinner/Preloader_1.gif) center no-repeat #fff;
 } */
+/* CSS STYLING FOR FILTER FUNCTION IN MAP DASHBOARD */
+
+
+
+.inputGroup {
+    background-color: rgba(32,32,32,0.5);
+    display: block;
+    margin: 5px 0;
+    position: relative;
+    height:60px;
+    max-height: 80px !important
+}
+.inputGroup label {
+    padding: 12px 30px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #c8ced3;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease-in;
+    overflow: hidden;
+}
+.inputGroup label:before {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    background-color: rgba(64,64,64,1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+            transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: -1;
+}
+.inputGroup label:after {
+    width: 32px;
+    height: 32px;
+    content: '';
+    border: 2px solid #D1D7DC;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.inputGroup input:checked ~ label {
+    color: #fff;
+}
+.inputGroup input:checked ~ label:before {
+    -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+            transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    opacity: 1;
+}
+.inputGroup input:checked ~ label:after {
+    background-color: rgba(32,32,32,0.5);
+    border-color: #54E0C7;
+}
+.inputGroup input {
+    width: 32px;
+    height: 32px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.form {
+    padding: 0px;
+    max-width: 550px;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.highlight-teal
+{
+    background: rgb(0, 102, 102, 0.9);
+    color: white;
+    border-radius: 10px !important
+}
+
+.highlight-header
+{
+    padding: 10px 15px;
+    font-family: 'raleway';
+    font-size: 20px;
+    text-transform: uppercase;
+    color: rgb(0, 102, 102)
+}
+
+.indented-text
+{
+    text-indent: 5%;
+    text-align: justify !important
+}
+
+
+.info-item .info-subject,
+.info-item .info-detail
+{
+    font-size: 16px;
+    font-family: 'quicksand'
+}
+
+.info-item .info-subject
+{
+    padding: 5px 10px;
+    color: rgb(0, 102, 102)
+}
+
+
+#form-wrapper
+{
+    background:rgb(0, 153, 153);
+    padding-left: 50px;
+    min-height: 80px;
+    height: 80px;
+    color:white
+}
+
+#form-wrapper .form-header,
+#form-wrapper .form-subheader
+{
+    font-family: 'quicksand';
+    text-transform: uppercase;
+}
+
+#form-wrapper .form-header
+{
+    font-size: 25px;
+    font-weight: bolder
+}
+
+#form-wrapper .form-subheader
+{
+    font-size: 19px;
+    padding-left:20px
+}
+
+.form-subheader a:link,
+.form-subheader a:hover,
+.form-subheader a:visited
+{
+    color: whitesmoke;
+    text-underline-position: above
+}
+
+.search-wrapper input,
+.search-wrapper button
+{
+    border-radius: 20px
+}
+
+#button-search
+{
+    border-top-right-radius: 20px !important; 
+    border-bottom-right-radius: 20px !important
+}
+
+.text-teal
+{
+    color: rgb(0, 102, 102, 0.9)
+}
+
+#dataTable-specs tr
+{
+    padding-top:5px !important; 
+    padding-bottom: 5px !important
+}
+
+
+
+/* END STYLING */

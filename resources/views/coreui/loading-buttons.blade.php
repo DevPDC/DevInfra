@@ -24,7 +24,7 @@
 {{-- Additional Styles Section --}}
 {{-- --------------- --}}
 @section('addStyles')
-    {{ Html::style('coreui/css/ladda/css/ladda-themeless.min.css') }}
+    {{ Html::style('public/coreui/css/ladda/css/ladda-themeless.min.css') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Style Section --}}
@@ -178,9 +178,9 @@
 {{-- Additional Scripts Section --}}
 {{-- --------------- --}}
 @section('addScripts')
- {{ Html::script('coreui/js/ladda/js/spin.min.js') }}
- {{ Html::script('coreui/js/ladda/js/ladda.min.js') }}
- {{ Html::script('coreui/js/loading-button.js') }}
+ {{ Html::script('public/coreui/js/ladda/js/spin.min.js') }}
+ {{ Html::script('public/coreui/js/ladda/js/ladda.min.js') }}
+ {{ Html::script('public/coreui/js/loading-button.js') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Script Section --}}

@@ -1,10 +1,21 @@
-@extends('layouts.reg')
+<html lang="en">
 
-@section('content')     
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>CoreUI Pro Bootstrap Admin Template</title>
+    
+    @include('partials._stylesheets')
+</head>
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ route('/') }}"><b>Admin</b>LTE</a>
+                <a href="#"><b>Admin</b>LTE</a>
             </div>
             
             <div class="register-box-body">
@@ -72,5 +83,9 @@
                 <!-- /.form-box -->
         </div>
         <!-- /.register-box -->
+    @include('partials._scripts')
+
+</body>
+
+</html>
                 
-@endsection

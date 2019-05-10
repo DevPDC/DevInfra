@@ -14,7 +14,8 @@
     {{-- Stylesheets --}}
     {{-- ------------ --}}
     @include('partials._stylesheets')
-    {{ Html::style('mapping/get-mapping.css') }}
+    {{ Html::style('public/mapping/get-mapping.css') }}
+    {{ Html::style('public/css/all-mapping.css') }}
     {{-- ------------ --}}
     {{-- ------------ --}}
 
@@ -26,21 +27,16 @@
     {{-- ------------ --}}
 
   
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body class="app header-fixed aside-menu-fixed">
     <div class="pace  pace-inactive pace-inactive">
         <div class="pace-progress" style="transform: translate3d(100%, 0px, 0px);" data-progress-text="100%" data-progress="99">
             <div class="pace-progress-inner"></div>
         </div>
         <div class="pace-activity"></div>
     </div>
-    @include('partials._header')
+    @include('partials._header-map')
     <div class="app-body">
 
-        {{-- Side navigation --}}
-        {{-- ------------ --}}
-        @include('partials._sidenav')
-        {{-- End Side Navigation --}}
-        {{-- ------------ --}}
 
 
         {{-- Main Content --}}
@@ -49,12 +45,6 @@
         {{-- ------------ --}}
         {{-- ------------ --}}
 
-            {{-- Breadcrumb --}}
-        
-            {{-- ------------ --}}
-            @include('partials._breadcrumb')
-            {{-- ------------ --}}
-            {{-- ------------ --}}
 
 
             <div class="container-fluid">
@@ -96,12 +86,13 @@
     {{-- javascripts --}}
     {{-- ------------ --}}
     @include('partials._scripts')
-    @include('partials._mapping-scripts')
+    {{ Html::script('public/js/all-mapping.js') }}
     {{-- End Javascript partial --}}
     {{-- ------------ --}}
     
     {{-- Yielded JavaScripts --}}
     {{-- ------------ --}}
+    
     @yield('addScripts')
     {{-- ------------ --}}
     {{-- ------------ --}}

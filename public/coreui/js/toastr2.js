@@ -47,7 +47,7 @@ $('#showtoast').click(function () {
     debug: $('#debugInfo').prop('checked'),
     newestOnTop: $('#newestOnTop').prop('checked'),
     progressBar: $('#progressBar').prop('checked'),
-    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+    position: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
     preventDuplicates: $('#preventDuplicates').prop('checked'),
     onclick: null
   };

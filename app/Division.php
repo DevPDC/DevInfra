@@ -14,11 +14,11 @@ class Division extends Model
 
     public function posts()
     {
-        return $this->hasMany('App\Division');
+        return $this->hasMany('App\Posts');
     }
 
     public function profile()
     {
-        return $this->hasMany('App\Profile');
+        return $this->hasMany('App\Profile','id_division','emp_division');
     }
 }

@@ -1,5 +1,5 @@
 Ladda.bind('.btn-ladda', {
-    timeout: 2000
+    timeout: 8000
 });
 Ladda.bind('.btn-ladda-progress', {
     callback: function callback(instance) {

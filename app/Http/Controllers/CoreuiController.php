@@ -60,4 +60,19 @@ class CoreuiController extends Controller
     {
         return view('coreui.basic-forms');
     }
+
+    public function getCollapse()
+    {
+        return view('coreui.collapse');
+    }
+
+    public function getProgress()
+    {
+        return view('coreui.progress');
+    }
+
+    public function getListGroup()
+    {
+        return view('coreui.list-group');
+    }
 }

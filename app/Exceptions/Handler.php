@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,7 +45,37 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($this->isHttpException($exception))
+        {
+            switch ($exception->getStatusCode()) 
+                {
+                // not found
+                case 404:
+                return redirect('map_dashboard');
+                break;
+
+                // internal error
+                case '500':
+                return redirect()->guest('home');
+                break;
+
+                default:
+                    
+                if ($exception instanceof TokenMismatchException){
+                    // Catch it here and do what you want. For example...
+                    return redirect()->back()->withInput()->with('error', 'Your session has expired');
+                }
+                else 
+                {
+                    return $this->renderHttpException($exception);
+                }
+                break;
+            }
+        }
+        else
+        {
         return parent::render($request, $exception);
+        }
     }
 
     /**
@@ -61,5 +92,21 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest(route('login'));
+    }
+
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        if (config('app.debug')) {
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+
+            return response()->make(
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
+        }
+
+        return parent::convertExceptionToResponse($e);
     }
 }

@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Manila',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,10 @@ return [
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         DevMarketer\LaraFlash\LaraFlashServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
         /*
@@ -235,7 +239,8 @@ return [
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'LaraFlash' => DevMarketer\LaraFlash\LaraFlashFacade::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

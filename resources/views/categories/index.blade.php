@@ -22,7 +22,11 @@
 
 {{-- Title Section --}}
 {{-- --------------- --}}
-@section('breadcrumb-title','Categories')
+@section('breadcrumb-title')
+    <li class="breadcrumb-item">
+        Categories
+    </li>
+@endsection
 {{-- --------------- --}}
 {{-- --------------- --}}
 

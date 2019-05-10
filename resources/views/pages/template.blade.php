@@ -34,13 +34,13 @@
 
 
 
-{{-- Additional Styles Section --}}
+{{-- Content Section --}}
 {{-- --------------- --}}
-    @section('addStyles')
-
+    @section('content')
+        
     @endsection
 {{-- --------------- --}}
-{{-- End Addtl Style Section --}}
+{{-- End Content Section --}}
 
 
 
@@ -50,13 +50,13 @@
 
 
 
-{{-- Content Section --}}
+{{-- Additional Styles Section --}}
 {{-- --------------- --}}
-    @section('content')
-        
+    @section('addStyles')
+
     @endsection
 {{-- --------------- --}}
-{{-- End Content Section --}}
+{{-- End Addtl Style Section --}}
 
 
 

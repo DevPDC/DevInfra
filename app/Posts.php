@@ -53,4 +53,29 @@ class Posts extends Model
     {
         return $this->hasOne('App\Inspection');
     }
+
+    public function technician()
+    {
+        return $this->belongsToMany('App\Technician','request_technician','post_id');
+    }
+
+    public function evaluation()
+    {
+        return $this->hasMany('App\Evaluation');
+    }
+
+    public function ticket()
+    {
+        return $this->hasOne('App\Ticket');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo('App\Receiver');
+    }
+
+    public function priorities()
+    {
+        return $this->hasOne('App\Priority');
+    }
 }

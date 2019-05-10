@@ -71,7 +71,20 @@ class ProfileController extends Controller
         $infrastructures = Infrastructure::all();
         $facilities = Facility::all();
         
-        $profile = Profile::select('emp_idno','emp_fullname','emp_division','emp_station','emp_office','emp_unit','emp_mname','emp_lname','emp_fname','emp_cpno','emp_email_official','emp_email_personal')->where('emp_idno', $id)->first();
+        $profile = Profile::select('profile_picture',
+                                    'emp_idno',
+                                    'emp_fullname',
+                                    'emp_division',
+                                    'emp_station',
+                                    'emp_office',
+                                    'emp_unit',
+                                    'emp_mname',
+                                    'emp_lname',
+                                    'emp_fname',
+                                    'emp_cpno',
+                                    'emp_email_official',
+                                    'emp_email_personal')->where('emp_idno', $id)->first();
+                                    
         $reqs = Posts::where('user_id', $id)->get();
 
         $positionid = Profile::select('emp_position')->where('emp_idno', $id)->first();

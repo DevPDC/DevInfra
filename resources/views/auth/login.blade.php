@@ -12,7 +12,6 @@
     
     @include('partials._stylesheets')
 </head>
-
 <body class="app flex-row align-items-center  pace-done">
     <div class="pace  pace-inactive">
         <div class="pace-progress" style="transform: translate3d(100%, 0px, 0px);" data-progress-text="100%"
@@ -28,7 +27,7 @@
                     <div class="card p-4">
                         <div class="card-body">
                             {{ Form::open(['route' => 'login', 'method' => 'POST']) }}
-                            {{csrf_field()}}
+                            {{ csrf_field() }}
                             <h1>Login</h1>
                             <p class="text-muted">Sign In to your account</p>
                             <div class="input-group mb-3">

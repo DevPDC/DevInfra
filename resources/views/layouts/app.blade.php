@@ -8,8 +8,11 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    {{ Html::script('resources/assets/js/app.js') }}
     <title>PPDIS | @yield('title')</title>
 
+
+    @yield('leaflet-style')
     {{-- Stylesheets --}}
     {{-- ------------ --}}
     @include('partials._stylesheets')
@@ -47,6 +50,8 @@
         {{-- ------------ --}}
         {{-- ------------ --}}
 
+            @include('partials._toastr')
+
             {{-- Breadcrumb --}}
         
             {{-- ------------ --}}
@@ -63,7 +68,7 @@
                             {{-- ------------ --}}
                             @yield('content')
                             
-                            @include('partials._create-request')
+                            @include('partials._search-ticket')
                             {{-- ------------ --}}
                             {{-- ------------ --}}
                         </div>
@@ -96,6 +101,7 @@
     {{-- javascripts --}}
     {{-- ------------ --}}
     @include('partials._scripts')
+    @include('partials._create-request')
     {{-- End Javascript partial --}}
     {{-- ------------ --}}
     
@@ -104,6 +110,7 @@
     @yield('addScripts')
     {{-- ------------ --}}
     {{-- ------------ --}}
+
 
 </body>
 </html>

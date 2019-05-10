@@ -14,12 +14,12 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','emp_idno');
     }
 
     public function division()
     {
-        return $this->belongsTo('App\Division');
+        return $this->belongsTo('App\Division','emp_division');
     }
 
     public function station()
@@ -40,5 +40,10 @@ class Profile extends Model
     public function position()
     {
         return $this->hasOne('App\Position');
+    }
+
+    public function brand()
+    {
+        return $this->hasMany('App\Brand','user_id','emp_idno');
     }
 }

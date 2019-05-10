@@ -22,7 +22,14 @@
 
 {{-- Title Section --}}
 {{-- --------------- --}}
-@section('breadcrumb-title',"Categories  /  $cat->category_name")
+@section('breadcrumb-title')
+    <li class="breadcrumb-item">
+        Categories
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#">{{ $cat->category_name }}</a>
+    </li>
+@endsection
 {{-- --------------- --}}
 {{-- --------------- --}}
 
@@ -37,7 +44,7 @@
 {{-- Additional Styles Section --}}
 {{-- --------------- --}}
     @section('addStyles')
-        {{ Html::style('coreui/css/dataTables/css/dataTables.bootstrap4.css') }}
+        {{ Html::style('public/coreui/css/dataTables/css/dataTables.bootstrap4.css') }}
     @endsection
 {{-- --------------- --}}
 {{-- End Addtl Style Section --}}
@@ -60,15 +67,15 @@
                         <i class="fa fa-table"></i>
                         <strong>Service Request</strong>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-hover table-striped dataTable" id="dataTable">
                             <thead>
                                 <th>#</th>
                                 <th>Requester</th>
                                 <th>Category</th>
                                 <th>Details</th>
-                                <th>Status</th>
                                 <th>Date of Request</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
@@ -127,9 +134,9 @@
 {{-- Additional Scripts Section --}}
 {{-- --------------- --}}
     @section('addScripts')
-        <script src="{{ asset('coreui/js/dataTables.js') }}"></script>
-        <script src="{{ asset('coreui/js/dataTables/js/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ asset('coreui/js/dataTable-function.js') }}"></script>
+        <script src="{{ asset('public/coreui/js/dataTables.js') }}"></script>
+        <script src="{{ asset('public/coreui/js/dataTables/js/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('public/coreui/js/dataTable-function.js') }}"></script>
         <script>    
                 $(document).ready(function() {
                     $('.dataTable').DataTable({
@@ -141,7 +148,17 @@
                                 id: '{{ $cat->id }}',
                                 token: '{{ csrf_token() }}'
                             }
-                        }
+                        },
+                        columns: [
+                            {data: 0, name: 'id'},
+                            {data: 1, name: 'empid'},
+                            {data: 2, name: 'category'},
+                            {data: 11, name: 'details'},
+                            {data: 10, name: 'created_at'},
+                            {data: 8, name: 'status'},
+                            {data: 9, name: 'action'},
+                        ],
+                        order: [ [ 0, 'desc'] ]
                     })
                 });
         </script>

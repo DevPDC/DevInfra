@@ -47,13 +47,15 @@ class SupplyController extends Controller
     {
         $this->validate($request, [
             'supply_name' => 'required|max:100',
-            'supply_brand' => 'max:100'
+            'brand_id' => 'max:100',
+            'quantity' => 'integer|required'
         ]);
 
         $supply = new Supply;
 
         $supply->supply_name = $request->supply_name;
-        $supply->supply_brand = $request->supply_brand;
+        $supply->brand_id = $request->brand_id;
+        $supply->quantity = $request->quantity;
 
         $supply->save();
 
@@ -70,7 +72,16 @@ class SupplyController extends Controller
      */
     public function show($id)
     {
-        //
+        $posts = Posts::all();
+        $categories = Category::all();
+        $infrastructures = Infrastructure::all();
+        $facilities = Facility::all();
+        
+        $supply = Supply::find($id);
+
+        return view('supplies.show',$id)->withInfrastructures($infrastructures)->withCategories($categories)->withPosts($posts)->withFacilities($facilities)->withSupplies($supplies);
+
+
     }
 
     /**
@@ -93,7 +104,23 @@ class SupplyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'supply_name' => 'required|max:100',
+            'brand_id' => 'max:100',
+            'quantity' => 'integer'
+        ]);
+
+        $supply = Supply::find($id);
+
+        $supply->supply_name = $request->supply_name;
+        $supply->brand_id = $request->brand_id;
+        $supply->quantity = $request->quantity;
+
+        $supply->save();
+
+        Session::has('success','Selected supply has been updated');
+
+        return redirect()->route('supplies.show',$id);
     }
 
     /**
@@ -109,6 +136,6 @@ class SupplyController extends Controller
         $supply->delete();
         
         Session::flash('success', 'The selected supply was successfully deleted!');
-        return redirect()->route('supply.index');
+        return redirect()->route('supplies.index');
     }
 }

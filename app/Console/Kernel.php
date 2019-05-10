@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        'App\Console\Commands\SendMaintenanceAlert',
+        'App\Console\Commands\SendServiceAlert',
     ];
 
     /**
@@ -24,8 +26,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('service:alert')
+                ->everyMinute();
+                
+        $schedule->command('maintenance:alert')
+                ->everyMinute();
     }
 
     /**

@@ -24,8 +24,8 @@
 {{-- Additional Styles Section --}}
 {{-- --------------- --}}
 @section('addStyles')
-    {{ Html::style('coreui/js/bootstrap-daterangepicker/css/daterangepicker.min.css') }}
-    {{ Html::style('coreui/css/select2/select2.min.css') }}
+    {{ Html::style('public/coreui/js/bootstrap-daterangepicker/css/daterangepicker.min.css') }}
+    {{ Html::style('public/coreui/css/select2/select2.min.css') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Style Section --}}
@@ -297,11 +297,11 @@
 {{-- Additional Scripts Section --}}
 {{-- --------------- --}}
 @section('addScripts')
-    {{ Html::script('coreui/js/jQuery/js/jquery.maskedinput.js') }}
-    {{ Html::script('coreui/js/moment/js/moment.min.js') }}
-    {{ Html::script('coreui/js/select2/js/select2.min.js') }}
-    {{ Html::script('coreui/js/bootstrap-daterangepicker/js/daterangepicker.js') }}
-    {{ Html::script('coreui/js/advanced-forms.js') }}
+    {{ Html::script('public/coreui/js/jQuery/js/jquery.maskedinput.js') }}
+    {{ Html::script('public/coreui/js/moment/js/moment.min.js') }}
+    {{ Html::script('public/coreui/js/select2/js/select2.min.js') }}
+    {{ Html::script('public/coreui/js/bootstrap-daterangepicker/js/daterangepicker.js') }}
+    {{ Html::script('public/coreui/js/advanced-forms.js') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Script Section --}}

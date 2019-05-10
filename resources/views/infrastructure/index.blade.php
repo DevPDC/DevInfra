@@ -22,7 +22,11 @@
 
 {{-- Title Section --}}
 {{-- --------------- --}}
-@section('breadcrumb-title','Infrastructures')
+@section('breadcrumb-title')
+    <li class="breadcrumb-item">
+        <a href="#">Infrastructures</a>
+    </li>
+@endsection
 {{-- --------------- --}}
 {{-- --------------- --}}
 

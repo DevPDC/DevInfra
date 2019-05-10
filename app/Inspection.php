@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inspection extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function post()
     {

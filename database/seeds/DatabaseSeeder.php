@@ -12,6 +12,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        $this->call(StatusSeeder::class);
+        
+        // Uncomment the lines below to seed libraries
+
+        // $this->call(StatusSeeder::class);
+        // $this->call(RolesSeeder::class);
+        // $this->call(AdministratorSeeder::class);
+        // $this->call(RoleAdminSeeder::class);
+        // $this->call(SeederFacilityPropertiesCategory::class);
+        $this->call(InfrastructureSeeder::class);
+        // $this->call(ServiceCategorySeeder::class);
+        // $this->call(LogStatusSeeder::class);
+        // $this->call(RatingSeeder::class);
+        // $this->call(EmailLogCategorySeeder::class);
+        // $this->call(StatusMaintenanceSeeder::class);
+        // $this->call(ScheduleCategoriesSeeder::class);
+
     }
 }
+    

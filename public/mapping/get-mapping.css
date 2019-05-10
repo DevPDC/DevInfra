@@ -1,4 +1,4 @@
 
 @import url('libs/leaflet.css');
+@import url('plug-ins/leaflet-awesome-markers.css');
 @import url('src/leaflet.draw.css');
-@import url('plug-ins/leaflet-search.css ');

@@ -24,7 +24,7 @@
 {{-- Additional Styles Section --}}
 {{-- --------------- --}}
 @section('addStyles')
-{{ Html::style('coreui/css/fullcalendar/css/fullcalendar.min.css') }}
+{{ Html::style('public/coreui/css/fullcalendar/css/fullcalendar.min.css') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Style Section --}}
@@ -529,10 +529,10 @@
 {{-- Additional Scripts Section --}}
 {{-- --------------- --}}
 @section('addScripts')
-{{ Html::script('coreui/js/moment/moment.min.js') }}
-{{ Html::script('coreui/js/fullcalendar/js/fullcalendar.min.js') }}
-{{ Html::script('coreui/js/fullcalendar/js/gcal.js') }}
-{{ Html::script('coreui/js/calendar.js') }}
+{{ Html::script('public/coreui/js/moment/moment.min.js') }}
+{{ Html::script('public/coreui/js/fullcalendar/js/fullcalendar.min.js') }}
+{{ Html::script('public/coreui/js/fullcalendar/js/gcal.js') }}
+{{ Html::script('public/coreui/js/calendar.js') }}
 @endsection
 {{-- --------------- --}}
 {{-- End Addtl Script Section --}}

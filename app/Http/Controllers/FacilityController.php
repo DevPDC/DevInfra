@@ -8,7 +8,9 @@ use App\Facility;
 use Session;
 use App\Category;
 use App\Infrastructure;
+use App\Posts;
 use Datatables;
+use App\FacilityImage;
 
 class FacilityController extends Controller
 {
@@ -58,7 +60,7 @@ class FacilityController extends Controller
 
         Session::flash('success','New Facility has been added to the map! Please reload if not automatically added to the dashboard.');
 
-        return redirect()->route('home_dashboard');
+        return back();
     }
 
     /**
@@ -69,7 +71,20 @@ class FacilityController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::all();
+        $infrastructures = Infrastructure::all();
+        $posts = Posts::orderBy('id','desc')->get();
+        $facilities = Facility::all();
+        $image = FacilityImage::where('facility_id',$id)->first();
+
+        $facility = Facility::find($id);
+
+        return view('facilities.show')->withInfrastructures($infrastructures)
+                                        ->withCategories($categories)
+                                        ->withPosts($posts)
+                                        ->withFacilities($facilities)
+                                        ->withFacility($facility)
+                                        ->withFacilityimage($image);
     }
 
     /**
@@ -103,7 +118,6 @@ class FacilityController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
     public function getAllFacilities()

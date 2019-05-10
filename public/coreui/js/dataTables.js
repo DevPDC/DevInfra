@@ -14844,4 +14844,5 @@
 		 */
 
 		return $.fn.dataTable;
+		
 	}));
