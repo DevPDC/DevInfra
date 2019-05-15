@@ -32,6 +32,6 @@ class SendTicketNumberToClient extends Mailable
     {
         return $this->markdown('vendor.notifications.ticket-number')
                     ->from('PPDISMAINTENANCE@GMAIL.COM')
-                    ->subject('PPDIS - Ticket Number');
+                    ->subject('PPDIS - Ticket Number');\
     }
 }
