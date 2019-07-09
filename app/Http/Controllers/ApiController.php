@@ -28,6 +28,7 @@ use App\Receiver;
 use App\Facility;
 use App\Profile;
 use Datatables;
+use App\Status;
 use App\Supply;
 use App\Ticket;
 use App\Brand;
@@ -990,6 +991,54 @@ class ApiController extends Controller
         $log->save();
 
         return 'success';
+    }
+
+    public function getCategorySelect() {
+        $categories = Category::all();
+
+        return $categories->toJson();
+    }
+
+    public function getStatusSelect() {
+        $status = Status::all();
+
+        return $status->toJson();
+    }
+
+    public function generateSummarizeServiceReport(Request $request) {
+        $status = Status::find($request->status);
+        $category = Category::find($request->category);
+        $from = date('Y-m-d h:i:s', strtotime($request->from));
+        $to = date('Y-m-d h:i:s', strtotime($request->to));
+
+        $posts = Posts::select('service_requests.id',
+                                'emp_idno',
+                                'status_id',
+                                'category_id',
+                                'proposed_service_date',
+                                'request_title',
+                                'request_details',
+                                'service_requests.created_at',
+                                'service_requests.updated_at')
+                                ->join('lib_categories','service_requests.category_id','lib_categories.id')
+                                ->join('lib_status','status_id','lib_status.id')
+                                ->where('category_id',$category->id)
+                                ->where('status_id',$status->id)
+                                ->whereDate('service_requests.updated_at','>=', $from)
+                                ->whereDate('service_requests.updated_at','<=', $to)
+                                ->get();
+
+                                // dd($posts);
+
+        $pdf = PDF::loadview('PDFReports.summary-service',array('from' => $from,
+                                                                'to' => $to, 
+                                                                'category' => $category,
+                                                                'status' => $status,
+                                                                'posts' => $posts
+                                                                ))
+                                                                ->setPaper('legal', 'landscape');
+        
+        return $pdf->stream('PPDIS-Summarize Request');
     }
 }
     

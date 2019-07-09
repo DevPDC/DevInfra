@@ -33,6 +33,9 @@ Route::group(['middleware' => ['web']], function() {
 
         // End Sample Pages
         Route::get('/individual-request','PDFController@pdfIndividualReport');
+        Route::get('summarize-report','ApiController@generateSummarizeServiceReport')->name('summarize-report');
+
+        
         Route::get('/htmlReport','PageController@getHtmlReport');
         Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/report', "ReportController@index");
@@ -41,6 +44,9 @@ Route::group(['middleware' => ['web']], function() {
         Route::get('map_dashboard', 'PageController@getMapDashboard');
         Route::get('calendar', 'PageController@getCalendar');
         Route::get('access-denied','PageController@getErrorDenied');
+        Route::get('sendFeedbackFormToClients',['as' => 'sendFeedbackFormToClients', 'uses' =>'EmailController@sendFeedbackFormToClients']);
+
+
         Route::post('assignTechnician',['as' => 'assignTechnician', 'uses' =>'RequestUpdateController@assignedTechnician']);
         Route::resource('infrastructure', 'InfrastructureController', ['except' => ['create']]);
         Route::resource('category', 'CategoryController',['except' => ['create']]);

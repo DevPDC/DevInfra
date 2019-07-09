@@ -44,9 +44,12 @@ Route::get('api/Drainage','ApiController@getDrainage')->name('api/Drainage');
 Route::get('api/Building','ApiController@getBuilding')->name('api/Building');
 Route::get('api/Trees','ApiController@getTrees')->name('api/Trees');
 Route::get('api/getTicketNumber','ApiController@getTicketNumber')->name('api/getTicketNumber');
-Route::post('api/getFacilitySpecifications','ApiController@getFacilitySpecifications')->name('api/getFacilitySpecifications');
 Route::get('api/getFacilityPropertiesDatable','ApiController@getFacilityPropertiesDatable')->name('api/getFacilityPropertiesDatable');
 Route::get('api/getGeneratorCapacity','ApiController@getGeneratorCapacity')->name('api/getGeneratorCapacity');
+Route::get('api/getCategorySelect','ApiController@getCategorySelect')->name('api/getCategorySelect');
+Route::get('api/getStatusSelect','ApiController@getStatusSelect')->name('api/getStatusSelect');
+
+Route::post('api/getFacilitySpecifications','ApiController@getFacilitySpecifications')->name('api/getFacilitySpecifications');
 Route::post('api/getLatestLog','ApiController@getLatestLog')->name('api/getLatestLog');
 Route::post('api/getProgress','ApiController@getProgress')->name('api/getProgress');
 Route::post('api/getPercentageOfGenset','ApiController@getPercentageOfGenset')->name('api/getPercentageOfGenset');

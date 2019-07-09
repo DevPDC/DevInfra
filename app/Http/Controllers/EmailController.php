@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\MaintenanceAlert;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendFeedbackForm;
 use Illuminate\Http\Request;
 use App\Mail\ServiceAlert;
 use Carbon\Carbon;
@@ -99,5 +100,53 @@ class EmailController extends Controller
         Session::flash('success','Service Request Alerts has been sent to '.$email.'.');
 
         return back();
+    }
+
+    public function sendFeedbackFormToClients() {
+        $emails = Posts::select('emp_email_official',
+                                'emp_email_personal')
+                                ->join('hris.employees','service_requests.emp_idno','employees.emp_idno')
+                                ->distinct()
+                                ->get();
+
+        $email2 = Posts::select('emp_email_official',
+                                'emp_email_personal')
+                        ->join('hris.employees','service_requests.emp_idno','employees.emp_idno')
+                        ->where('service_requests.emp_idno','17-0811')
+                        ->distinct()
+                        ->get();
+
+                        dd($email2);
+        
+
+        foreach($email2 as $email)
+        {
+            if($email->emp_email_official != null)
+            {
+                $user = new User();
+                $user->email = $email;
+                Mail::to($email->emp_email_official)->send(new SendFeedbackForm());
+            } else if($email->emp_email_personal != null) {
+                $user = new User();
+                $user->email = $email;
+                Mail::to($email->emp_email_personal)->send(new SendFeedbackForm());
+            }
+        }
+
+        
+        // for($i=54;$i<$emails->count(); $i++)
+        // {
+        //     if($emails[$i]->emp_email_official != null)
+        //     {
+        //         $user = new User();
+        //         $user->emails = $emails[$i];
+        //         Mail::to($emails[$i]->emp_email_official)->send(new SendFeedbackForm());
+        //     } else if($emails[$i]->emp_email_personal != null) {
+        //         $user = new User();
+        //         $user->emails = $emails[$i];
+        //         Mail::to($emails[$i]->emp_email_personal)->send(new SendFeedbackForm());
+        //     }
+        // }
+
     }
 }

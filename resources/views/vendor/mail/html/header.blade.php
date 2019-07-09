@@ -1,5 +1,5 @@
 <tr>
-    <td class="header">
+    <td class="header button-blue">
         <a href="{{ $url }}">
             {{ $slot }}
         </a>

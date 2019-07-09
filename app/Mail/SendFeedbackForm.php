@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendTicketNumberToClient extends Mailable
+class SendFeedbackForm extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,9 @@ class SendTicketNumberToClient extends Mailable
      *
      * @return void
      */
-    public $ticket;
-
-    public function __construct($ticket)
+    public function __construct()
     {
-        $this->ticket = $ticket;
+        //
     }
 
     /**
@@ -30,8 +28,8 @@ class SendTicketNumberToClient extends Mailable
      */
     public function build()
     {
-        return $this->markdown('vendor.notifications.ticket-number')
+        return $this->markdown('vendor.notifications.feedback')
                     ->from('PPDISMAINTENANCE@GMAIL.COM')
-                    ->subject('PPDIS - Ticket Number');
+                    ->subject('Send us your feedback.');
     }
 }

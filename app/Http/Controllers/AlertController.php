@@ -22,7 +22,7 @@ class AlertController extends Controller
                 layer.setIcon(building);
                 break;
             case 8:
-                layer.setIcon(trees)
+                layer.setIcon(trees);
         } 
     }
 }

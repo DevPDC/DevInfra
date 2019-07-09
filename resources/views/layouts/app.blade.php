@@ -102,6 +102,7 @@
     {{-- ------------ --}}
     @include('partials._scripts')
     @include('partials._create-request')
+    @include('modals.report-modal')
     {{-- End Javascript partial --}}
     {{-- ------------ --}}
     

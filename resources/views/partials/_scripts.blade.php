@@ -14,13 +14,118 @@
     {{ Html::script('public/coreui/js/loading-button.js') }}
     {{ Html::script('public/js/parsley.min.js') }}
     {{ Html::script('public/custom/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
+    {{ Html::script('public/coreui/js/select2/js/select2.full.min.js') }}
 
-    \
+    
     <script>
         $('#ui-view').ajaxStart();
         $(document).ajaxComplete(function() {
             Pace.restart()
         });
+
+        function getCategorySelect() {
+            var wrapper = $('#summary #category_id');
+
+            wrapper.select2({
+                ajax: {
+                    type: 'GET',
+                    dataType: 'json',
+                    url: "{{ route('api/getCategorySelect') }}",
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.category_name,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    }
+                },
+                style: {
+                    color: 'black'
+                }
+            });
+        };
+
+        $('#category_id').on('mouseover',function() {
+            alert();
+        });
+
+        function getStatusSelect() {
+            var wrapper = $('#summary #status_id');
+
+            wrapper.select2({
+                ajax: {
+                    type: 'GET',
+                    dataType: 'JSON',
+                    url: "{{ route('api/getStatusSelect') }}",
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.status_name,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    }
+                },
+                style: {
+                    color: 'black'
+                }
+            });
+        }
+        
+        function dateRangeSummary() {
+            var dateFormat = "mm/dd/yy",
+                from = $( "#summary #from_date" ),
+                to = $( "#summary #to_date" );
+                
+                from.datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    autoclose: true
+                });
+                    
+
+                to.datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    autoclose: true
+                });
+
+                from.on( "change", function() {
+                    to.datepicker( "option", "minDate", getDate( this ) );
+                }),
+
+                to.on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                });
+        }
+        
+        function dateRangeEvaluation() {
+            var dateFormat = "mm/dd/yy",
+                from = $( "#evaluation #from_date" )
+                    .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    autoclose: true,
+                    numberOfMonths: 6
+                    })
+                    .on( "change", function() {
+                    to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                to = $( "#evaluation #to_date" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    autoclose: true,
+                    numberOfMonths: 6
+                })
+                .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                });
+        }
     </script>
     
     <script src="{{ asset('public/coreui/js/toastr.js') }}"></script>
@@ -56,7 +161,12 @@
     @endif
     <script>
         $(document).ready(function(){
+            getStatusSelect();
+            getCategorySelect();
+            dateRangeEvaluation();
+            dateRangeSummary();
             // Date picker Initialization
+
             $('#datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 setDate: new Date(),
@@ -66,6 +176,7 @@
         });
     </script>
     <script>
+
         $('#button-search').click(function(){
             // seach input value
             $('.dataTable-search').DataTable().destroy();

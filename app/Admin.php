@@ -14,6 +14,6 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
 
     use Authenticatable,CanResetPassword,Notifiable;
 
-    protected $fillable = 
+    protected $fillable = '';
 
 }
